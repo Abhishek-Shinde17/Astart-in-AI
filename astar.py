@@ -1,4 +1,3 @@
-
 # add vertext
 def add_vertex(v):
     global graph
@@ -92,6 +91,6 @@ for _ in range(link):
 print("Hurastic Value")
 
 for _ in range(4):
-    h(input("vertex>"),input("weight>"))
+    h(input("vertex>"),int(input("weight>")))
 
 print("optimal path is:",astar(input("root>"),input("goal>")))
