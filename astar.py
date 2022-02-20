@@ -14,6 +14,9 @@ def edge(v , adj_v , w):
     global graph
     temp = (adj_v,w)
     graph[v].append(temp)
+def near(v):
+    global graph
+    return graph[v]
 
 # adjucent node of vetex
 def adj(v):
