@@ -33,17 +33,44 @@ def hu(v):
 
 # to choose optimal path 
 def astar(root , goal):
-    print(root , goal)
+    open = [root]
     visited = []
-    open = {}
-    close = {}
-    open[root] = 0
-    while root!= None:
-
+    Parameter ={}
+    Parameter[root] = 0
+    path ={}
+    path[root] = root
+    i = 0
+    while len(open)>0:
+        n =None
         for v in open:
-            pass
-        for neighbour in graph[root]:
-            print(neighbour)
+            if n==None or Parameter[v]+hu(v)<Parameter[n]+hu(n):
+                n = v
+                print(n)
+        
+        if n == goal:
+            list = []
+            print(path)
+            while path[n] !=n:
+                list.append(n)
+                n = path[n]
+            list.append(root)
+            list.reverse()
+            return list
+        for (node , weight) in near(n):
+            print("//",node)
+            if node not in open and node not in visited:
+                Parameter[node] = weight + hu(node)
+                path[node] = n
+                open.append(node)
+            elif Parameter[node] >Parameter[n]+weight:
+                Parameter[node]  =Parameter[n]+weight
+                path[node] = n
+                if node in visited:
+                    visited.remove(node)
+                    open.append(node)
+        open.remove(n)
+        visited.append(n)
+        print(visited)
 
 
 graph ={}
